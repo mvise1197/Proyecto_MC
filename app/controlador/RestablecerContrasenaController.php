@@ -25,7 +25,11 @@ if (isset($_GET['token'])) {
                 $nueva_clave = $_POST['nueva_clave'];
 
                 // Actualizar la contraseña en la base de datos
+<<<<<<< HEAD
                 if ($usuarioModel->actualizarContraseña($idPersonal, $nueva_clave)) {
+=======
+                if ($usuarioModel->actualizarContrasena($idPersonal, $nueva_clave)) {
+>>>>>>> 6f556ae15c98317bf436de74194cc90e02347285
                     echo '<script>
                             alert("Contraseña actualizada exitosamente.");
                             window.location.href = "../vista/login.php"; // Redirige al login

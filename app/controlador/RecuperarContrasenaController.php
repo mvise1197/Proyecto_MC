@@ -59,7 +59,11 @@ function enviarCorreo($email, $token) {
         $mail->isHTML(true);
         $mail->Subject = 'Restablecer contraseña';
         $mail->Body = '<p>Haz solicitado restablecer tu contraseña. Haz clic en el siguiente enlace para continuar:</p>
+<<<<<<< HEAD
                        <p><a href="http://localhost:3000/app/vista/restablecer_contraseña.php?token=' . $token . '">Restablecer contraseña</a></p>';
+=======
+                       <p><a href="http://localhost:3000/app/vista/restablecer_contrasena.php?token=' . $token . '">Restablecer contraseña</a></p>';
+>>>>>>> 6f556ae15c98317bf436de74194cc90e02347285
 
         // Enviar correo
         if (!$mail->send()) {

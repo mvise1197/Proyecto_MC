@@ -25,7 +25,11 @@
                     <label>
                         <input type="checkbox"> Recordar
                     </label>
+<<<<<<< HEAD
                     <a href="../vista/recuperar_contraseña.php">¿Olvidaste tu contraseña?</a>
+=======
+                    <a href="../vista/recuperar_contrasena.php">¿Olvidaste tu contraseña?</a>
+>>>>>>> 6f556ae15c98317bf436de74194cc90e02347285
                 </div>
                 <button type="submit" class="login-btn">Iniciar Sesión</button>
                 <!-- Botón para redirigir a la página de registro -->

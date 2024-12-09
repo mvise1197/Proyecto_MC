@@ -1,4 +1,5 @@
 /* General */
+<<<<<<< HEAD
 
 .menu-logo {
   display: flex;
@@ -12,11 +13,14 @@
   border-radius: 10px;
 }
 
+=======
+>>>>>>> 6f556ae15c98317bf436de74194cc90e02347285
 body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
   display: flex;
+<<<<<<< HEAD
   block-size: 100vh;
   overflow: hidden; /* Evita barras de desplazamiento no deseadas */
 }
@@ -25,10 +29,20 @@ body {
   display: flex;
   inline-size: 100%;
   min-block-size: 100vh;
+=======
+  block-size: 100vh; /* Garantiza que el cuerpo ocupe toda la altura de la ventana */
+}
+
+.container {
+  display: flex;
+  inline-size: 100%; /* Ocupa todo el ancho disponible */
+  min-block-size: 100vh; /* Garantiza que el contenedor ocupe toda la altura */
+>>>>>>> 6f556ae15c98317bf436de74194cc90e02347285
 }
 
 /* Botón para colapsar el menú */
 .menu-toggle {
+<<<<<<< HEAD
   display: none;
   position: absolute;
   inset-block-start: 20px;
@@ -40,10 +54,24 @@ body {
   font-size: 20px;
   cursor: pointer;
   z-index: 1000;
+=======
+  display: none; /* Oculto por defecto en pantallas grandes */
+  position: absolute; /* Posición fija en la ventana */
+  inset-block-start: 20px; /* Distancia del borde superior */
+  inset-inline-end: 20px; /* Distancia del borde derecho */
+  background-color: #4f799d; /* Color de fondo */
+  color: white; /* Color del texto */
+  border: none; /* Sin bordes */
+  padding: 10px; /* Espaciado interno */
+  font-size: 20px; /* Tamaño del texto */
+  cursor: pointer; /* Cambia el cursor a "mano" */
+  z-index: 1000; /* Asegura que el botón esté por encima del contenido */
+>>>>>>> 6f556ae15c98317bf436de74194cc90e02347285
 }
 
 /* Menú lateral */
 .sidebar {
+<<<<<<< HEAD
   inline-size: 250px;
   background-color: #4f799d;
   color: #ecf0f1;
@@ -95,10 +123,42 @@ body {
 
 .sidebar ul li a:hover {
   background-color: #34495e;
+=======
+  inline-size: 250px; /* Ancho fijo del menú */
+  background-color: #4f799d; /* Color de fondo */
+  color: #ecf0f1; /* Color del texto */
+  padding: 20px; /* Espaciado interno */
+  transition: transform 0.3s ease-in-out; /* Animación suave al abrir/cerrar */
+  overflow-y: auto; /* Permite scroll vertical si el contenido excede el alto */
+  box-sizing: border-box; /* Incluye padding dentro del tamaño total */
+}
+
+.sidebar ul {
+  list-style: none; /* Sin puntos o numeración en la lista */
+  padding: 0; /* Elimina el padding de la lista */
+}
+
+.sidebar ul li {
+  margin: 10px 0; /* Espaciado entre los elementos de la lista */
+}
+
+.sidebar ul li a {
+  text-decoration: none; /* Sin subrayado en los enlaces */
+  color: #ecf0f1; /* Color del texto */
+  display: block; /* Hace que los enlaces ocupen todo el ancho */
+  padding: 10px; /* Espaciado interno de los enlaces */
+  border-radius: 5px; /* Bordes redondeados */
+  transition: background-color 0.3s; /* Transición suave al pasar el mouse */
+}
+
+.sidebar ul li a:hover {
+  background-color: #34495e; /* Color al pasar el mouse sobre los enlaces */
+>>>>>>> 6f556ae15c98317bf436de74194cc90e02347285
 }
 
 /* Contenido principal */
 .main-content {
+<<<<<<< HEAD
   flex: 1;
   padding: 20px;
   background-color: #ecf0f1;
@@ -118,15 +178,48 @@ body {
     block-size: 100%;
     transform: translateX(-100%);
     z-index: 999;
+=======
+  flex: 1; /* Hace que el contenido principal ocupe el espacio restante */
+  padding: 20px; /* Espaciado interno */
+  background-color: #ecf0f1; /* Color de fondo */
+}
+
+#contenido h1 {
+  font-size: 24px; /* Tamaño del título */
+  color: #2c3e50; /* Color del texto del título */
+}
+
+/* Diseño adaptable (responsive) */
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block; /* Muestra el botón en pantallas pequeñas */
+  }
+
+  .sidebar {
+    position: absolute; /* Hace que el menú sea flotante */
+    inset-block-start: 0; /* Alinea el menú al borde superior */
+    inset-inline-start: 0; /* Alinea el menú al borde izquierdo */
+    block-size: 100%; /* Ocupa toda la altura de la pantalla */
+    transform: translateX(-100%); /* Oculta el menú inicialmente */
+    overflow-y: auto; /* Habilita el scroll vertical si el contenido excede el alto */
+>>>>>>> 6f556ae15c98317bf436de74194cc90e02347285
     box-sizing: border-box; /* Incluye el padding en el tamaño total */
   }
 
   .sidebar.active {
+<<<<<<< HEAD
     transform: translateX(0);
   }
 
   .main-content {
     padding: 10px;
+=======
+    transform: translateX(0); /* Muestra el menú cuando tiene la clase "active" */
+  }
+
+  .main-content {
+    padding: 10px; /* Reduce el padding en pantallas pequeñas */
+>>>>>>> 6f556ae15c98317bf436de74194cc90e02347285
   }
 
   #contenido h1 {
