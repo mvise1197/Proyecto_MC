@@ -1,0 +1,89 @@
+/* Estilos específicos para listarpersonal */
+.listar-body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+    margin: 0;
+    padding: 0;
+}
+
+.listar-container {
+    max-inline-size: 100%;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #ffffff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+/* Título */
+.listar-container h1 {
+    font-size: 24px;
+    margin-block-end: 20px;
+    color: #333333;
+}
+
+/* Botón de registro */
+.listar-container .btn-primary {
+    background-color: #007bff;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin-block-end: 20px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.listar-container .btn-primary:hover {
+    background-color: #0056b3;
+}
+
+/* Tabla */
+.listar-container .table {
+    inline-size: 100%;
+    border-collapse: collapse;
+    margin-block-end: 20px;
+}
+
+.listar-container .table th, .listar-container .table td {
+    border: 1px solid #dddddd;
+    text-align: start;
+    padding: 8px;
+}
+
+.listar-container .table th {
+    background-color: #f2f2f2;
+    color: #333333;
+}
+
+.listar-container .table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+/* Botones de acción */
+.listar-container .btn-warning, .listar-container .btn-danger {
+    padding: 5px 10px;
+    border: none;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.listar-container .btn-warning {
+    background-color: #ffc107;
+}
+
+.listar-container .btn-warning:hover {
+    background-color: #e0a800;
+}
+
+.listar-container .btn-danger {
+    background-color: #dc3545;
+}
+
+.listar-container .btn-danger:hover {
+    background-color: #c82333;
+}

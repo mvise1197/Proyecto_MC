@@ -1,0 +1,135 @@
+/* General */
+
+.menu-logo {
+  display: flex;
+  align-items: center; /* Centra verticalmente */
+  inline-size: 100%; /* O el ancho que necesites */
+}
+
+.img_menu {
+  inline-size: 70%;
+  block-size: auto;
+  border-radius: 10px;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  block-size: 100vh;
+  overflow: hidden; /* Evita barras de desplazamiento no deseadas */
+}
+
+.container_fluid {
+  display: flex;
+  inline-size: 100%;
+  min-block-size: 100vh;
+}
+
+/* Botón para colapsar el menú */
+.menu-toggle {
+  display: none;
+  position: absolute;
+  inset-block-start: 20px;
+  inset-inline-end: 20px;
+  background-color: #4f799d;
+  color: white;
+  border: none;
+  padding: 10px;
+  font-size: 20px;
+  cursor: pointer;
+  z-index: 1000;
+}
+
+/* Menú lateral */
+.sidebar {
+  inline-size: 250px;
+  background-color: #4f799d;
+  color: #ecf0f1;
+  padding: 20px;
+  transition: transform 0.3s ease-in-out; /* Animación suave al abrir/cerrar */
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Distribuye contenido con espacio entre bloques */
+  block-size: 100vh; /* Asegura que ocupe toda la altura */
+  overflow-y: auto; /* Habilita desplazamiento si el contenido excede */
+}
+
+/* Ajuste del último elemento (Cerrar Sesión) */
+.sidebar ul {
+  list-style: none; /* Sin puntos o numeración en la lista */
+  padding: 0; /* Elimina el padding de la lista */
+  flex: 1; /* Permite que la lista de opciones crezca y empuje el botón hacia abajo */
+}
+
+.logout-btn {
+  margin-block-start: auto; /* Mueve el botón al final del contenedor */
+  padding: 10px;
+  background-color: #e74c3c; /* Color de fondo para destacarlo */
+  color: white;
+  text-align: center;
+  border-radius: 5px;
+  text-decoration: none;
+  display: block;
+  transition: background-color 0.3s;
+}
+
+.logout-btn:hover {
+  background-color: #c0392b;
+}
+
+.sidebar ul li {
+  margin: 10px 0;
+}
+
+.sidebar ul li a {
+  text-decoration: none;
+  color: #ecf0f1;
+  display: block;
+  padding: 10px;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+.sidebar ul li a:hover {
+  background-color: #34495e;
+}
+
+/* Contenido principal */
+.main-content {
+  flex: 1;
+  padding: 20px;
+  background-color: #ecf0f1;
+  overflow-y: auto; /* Permite el desplazamiento si el contenido excede la altura */
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+  }
+
+  .sidebar {
+    position: absolute;
+    inset-block-start: 0;
+    inset-inline-start: 0;
+    block-size: 100%;
+    transform: translateX(-100%);
+    z-index: 999;
+    box-sizing: border-box; /* Incluye el padding en el tamaño total */
+  }
+
+  .sidebar.active {
+    transform: translateX(0);
+  }
+
+  .main-content {
+    padding: 10px;
+  }
+
+  #contenido h1 {
+    font-size: 20px; /* Reduce el tamaño del texto del título */
+  }
+}
