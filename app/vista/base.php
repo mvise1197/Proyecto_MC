@@ -16,15 +16,17 @@
 
     <!-- Menú lateral -->
     <nav class="sidebar">
-      <h2>I.E. TENIENTE MIGUEL CORTES DEL CASTILLO <br> PIURA</h2>
+      <div class="menu-logo">
+        <img src="../../public/img/logo.png" class="img_menu">
+      </div>
       <ul>
         <li><a href="#" onclick="cargarSeccion('inicio')">Inicio</a></li>
-        <li><a href="#" onclick="cargarSeccion('usuarios')">Usuarios</a></li>
+        <li><a href="#" onclick="cargarSeccion('personal')">Personal</a></li>
         <li><a href="#" onclick="cargarSeccion('grados')">Grados y Secciones</a></li>
         <li><a href="#" onclick="cargarSeccion('curso')">Cursos</a></li>
         <li><a href="#" onclick="cargarSeccion('estudiantes')">Estudiantes</a></li>
         <li><a href="#" onclick="cargarSeccion('asistencias')">Asistencias</a></li>
-        <li><a href="#" onclick="cargarSeccion('notas')">Notas</a></li>
+        <li><a href="#" onclick="cargarSeccion('nota')">Notas</a></li>
         <li><a href="#" onclick="cargarSeccion('reportes')">Reportes</a></li>
         <li><a href="#" onclick="cargarSeccion('configuracion')">Configuración</a></li>
         <li><a href="../controlador/AutenticacionController.php?action=logout" class="logout-btn">Cerrar Sesión</a></li>
@@ -41,16 +43,5 @@
 
   <script src="../../public/js/bootstrap.bundle.min.js"></script>
   <script src="../../public/js/scripts.js" defer></script>
-  <script>
-    // Código JavaScript para el menú lateral
-    document.addEventListener("DOMContentLoaded", function () {
-      const menuToggle = document.getElementById("menu-toggle");
-      const sidebar = document.querySelector(".sidebar");
-
-      menuToggle.addEventListener("click", function () {
-        sidebar.classList.toggle("active");
-      });
-    });
-  </script>
 </body>
 </html>

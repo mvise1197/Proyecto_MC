@@ -1,89 +1,89 @@
 /* Estilos específicos para listarpersonal */
 .listar-body {
-    font-family: Arial, sans-serif;
-    background-color: #f8f9fa;
-    margin: 0;
-    padding: 0;
+    font-family: Arial, sans-serif; /* Define el tipo de fuente y un respaldo (sans-serif) en caso de que Arial no esté disponible. */
+    background-color: #f8f9fa; /* Establece el color de fondo de la página. */
+    margin: 0; /* Elimina cualquier margen predeterminado alrededor del body. */
+    padding: 0; /* Elimina cualquier relleno predeterminado dentro del body. */
 }
 
 .listar-container {
-    max-inline-size: 100%;
-    margin: 20px auto;
-    padding: 20px;
-    background-color: #ffffff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
+    max-inline-size: 100%; /* Limita el ancho máximo del contenedor al 100% del ancho disponible. */
+    margin: 20px auto; /* Agrega un margen de 20px arriba y abajo, centra horizontalmente con `auto`. */
+    padding: 20px; /* Agrega un espacio interno de 20px alrededor del contenido. */
+    background-color: #ffffff; /* Establece un fondo blanco para el contenedor. */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Aplica una sombra sutil alrededor del contenedor. */
+    border-radius: 8px; /* Redondea las esquinas del contenedor. */
 }
 
 /* Título */
 .listar-container h1 {
-    font-size: 24px;
-    margin-block-end: 20px;
-    color: #333333;
+    font-size: 28px; /* Define el tamaño de la fuente del título. */
+    margin-block-end: 20px; /* Agrega un margen inferior de 20px al título. */
+    color: #333333; /* Establece el color del texto del título en gris oscuro. */
 }
 
 /* Botón de registro */
 .listar-container .btn-primary {
-    background-color: #007bff;
-    border: none;
-    color: white;
-    padding: 10px 20px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin-block-end: 20px;
-    border-radius: 4px;
-    cursor: pointer;
+    background-color: #007bff; /* Define el color de fondo azul para el botón. */
+    border: none; /* Elimina cualquier borde predeterminado del botón. */
+    color: white; /* Establece el color del texto del botón en blanco. */
+    padding: 10px 10px; /* Agrega espacio interno de 10px arriba/abajo y 10px izquierda/derecha. */
+    text-align: center; /* Centra el texto dentro del botón. */
+    text-decoration: none; /* Elimina cualquier subrayado del texto. */
+    display: inline-block; /* Asegura que el botón se comporte como un elemento en línea con bloque. */
+    font-size: 12px; /* Establece el tamaño de la fuente. */
+    margin-block-end: 20px; /* Agrega un margen inferior de 20px. */
+    border-radius: 10px; /* Redondea las esquinas del botón. */
+    cursor: pointer; /* Cambia el cursor a un puntero al pasar sobre el botón. */
 }
 
 .listar-container .btn-primary:hover {
-    background-color: #0056b3;
+    background-color: #0056b3; /* Cambia el color de fondo al pasar el ratón por encima. */
 }
 
 /* Tabla */
 .listar-container .table {
-    inline-size: 100%;
-    border-collapse: collapse;
-    margin-block-end: 20px;
+    inline-size: 100%; /* La tabla ocupa el 100% del ancho disponible. */
+    border-collapse: collapse; /* Elimina el espacio entre bordes de las celdas. */
+    margin-block-end: 20px; /* Agrega un margen inferior de 20px a la tabla. */
 }
 
 .listar-container .table th, .listar-container .table td {
-    border: 1px solid #dddddd;
-    text-align: start;
-    padding: 8px;
+    border: 1px solid #dddddd; /* Define un borde gris claro alrededor de cada celda. */
+    text-align: start; /* Alinea el texto al inicio (izquierda en idiomas LTR). */
+    padding: 5px; /* Agrega espacio interno de 5px dentro de cada celda. */
 }
 
 .listar-container .table th {
-    background-color: #f2f2f2;
-    color: #333333;
+    background-color: #f2f2f2; /* Establece un color de fondo gris claro para los encabezados. */
+    color: #333333; /* Define el color del texto en gris oscuro. */
 }
 
 .listar-container .table tr:nth-child(even) {
-    background-color: #f9f9f9;
+    background-color: #f9f9f9; /* Aplica un fondo ligeramente más claro a las filas pares. */
 }
 
 /* Botones de acción */
 .listar-container .btn-warning, .listar-container .btn-danger {
-    padding: 5px 10px;
-    border: none;
-    color: white;
-    border-radius: 4px;
-    cursor: pointer;
+    padding: 5px 10px; /* Agrega espacio interno de 5px arriba/abajo y 10px izquierda/derecha. */
+    border: none; /* Elimina cualquier borde predeterminado del botón. */
+    color: white; /* Establece el color del texto en blanco. */
+    border-radius: 10px; /* Redondea las esquinas del botón. */
+    cursor: pointer; /* Cambia el cursor a un puntero al pasar sobre el botón. */
 }
 
 .listar-container .btn-warning {
-    background-color: #ffc107;
+    background-color: #ffc107; /* Define un color amarillo para el botón de advertencia. */
 }
 
 .listar-container .btn-warning:hover {
-    background-color: #e0a800;
+    background-color: #e0a800; /* Cambia el color al pasar el ratón por encima. */
 }
 
 .listar-container .btn-danger {
-    background-color: #dc3545;
+    background-color: #dc3545; /* Define un color rojo para el botón de peligro. */
 }
 
 .listar-container .btn-danger:hover {
-    background-color: #c82333;
+    background-color: #c82333; /* Cambia el color al pasar el ratón por encima. */
 }

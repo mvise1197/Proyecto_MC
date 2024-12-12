@@ -11,10 +11,17 @@ require_once '../controlador/CursoController.php';
 $controller = new CursoController();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['eliminar_id'])) {
-    $controller->delete($_POST['eliminar_id']);
+    /*$controller->delete($_POST['eliminar_id']);
     // Almacenar mensaje de éxito en la sesión
     $_SESSION['mensaje'] = 'Curso eliminado exitosamente.';
-    // Redirigir a la lista de cursos
+    // Redirigir a la lista de cursos*/
+    $resultado = $controller->delete($_POST['eliminar_id']);
+    
+    if ($resultado['success']) {
+        $_SESSION['mensaje'] = $resultado['message'];
+    } else {
+        $_SESSION['error'] = $resultado['message'];
+    }
     header("Location: /app/vista/listarcursos.php");
     exit();
 }
@@ -79,6 +86,18 @@ ob_start();
     </script>
     <?php unset($_SESSION['mensaje']); endif; ?>
 
+    <!-- Modificado: Mostrar mensajes de error -->
+    <?php if (isset($_SESSION['error'])): ?>
+    <script>
+        Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: '<?php echo $_SESSION['error']; ?>',
+            confirmButtonText: 'Aceptar'
+        });
+    </script>
+    <?php unset($_SESSION['error']); endif; ?>
+
 </div>
 
 <script src="../../public/js/bootstrap.bundle.min.js"></script>
@@ -98,8 +117,7 @@ ob_start();
       if (result.isConfirmed) {
         const form = document.createElement('form');
         form.method = 'POST';
-        form.action = ''; // Aquí puedes especificar la ruta deseada, si es necesario.
-        
+        form.action = 'listarcurso.php'; // Aquí puedes especificar la ruta deseada, si es necesario.
         const input = document.createElement('input');
         input.type = 'hidden';
         input.name = 'eliminar_id';

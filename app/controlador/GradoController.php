@@ -35,7 +35,11 @@ class GradoController
 
     public function delete($idGrado)
     {
-        return $this->model->delete($idGrado);
+        $resultado = $this->model->delete($idGrado);
+        if (!$resultado) {
+            return ['success' => false, 'message' => 'No se puede eliminar este registro porque está relacionado con otros datos.'];
+        }
+        return ['success' => true, 'message' => 'Usuario eliminado exitosamente.'];
     }
 
     public function getInstituciones()

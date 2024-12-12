@@ -33,11 +33,7 @@ class Usuario {
     }
 
     // Actualizar la contraseña en la base de datos
-<<<<<<< HEAD
     public function actualizarContraseña($idPersonal, $nueva_clave) {
-=======
-    public function actualizarContrasena($idPersonal, $nueva_clave) {
->>>>>>> 6f556ae15c98317bf436de74194cc90e02347285
         $hashedPassword = password_hash($nueva_clave, PASSWORD_BCRYPT);
         $updateQuery = "UPDATE Personal SET Clave = ?, token = NULL, token_expiration = NULL WHERE idPersonal = ?";
         $updateStmt = $this->conn->prepare($updateQuery);

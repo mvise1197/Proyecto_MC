@@ -37,7 +37,11 @@ class CursoController
     // Método para eliminar un curso
     public function delete($idCurso)
     {
-        return $this->model->delete($idCurso);
+        $resultado = $this->model->delete($idCurso);
+        if (!$resultado) {
+            return ['success' => false, 'message' => 'No se puede eliminar este registro porque está relacionado con otros datos.'];
+        }
+        return ['success' => true, 'message' => 'Usuario eliminado exitosamente.'];
     }
 
     // Método para obtener los grados disponibles

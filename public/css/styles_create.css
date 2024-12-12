@@ -1,89 +1,89 @@
 /* Estilos específicos para create.php */
 .create-body {
-  font-family: Arial, sans-serif;
-  background-color: #f8f9fa;
-  margin: 0;
-  padding: 0;
+  font-family: Arial, sans-serif; /* Define el tipo de fuente para la página como Arial, con respaldo sans-serif. */
+  background-color: #f8f9fa; /* Establece un color de fondo gris claro para toda la página. */
+  margin: 0; /* Elimina cualquier margen predeterminado alrededor del body. */
+  padding: 0; /* Elimina cualquier relleno predeterminado dentro del body. */
 }
 
 .create-container {
-  max-inline-size: 600px; /* Cambiado a 600px para coincidir con update */
-  margin: 50px auto;
-  padding: 20px;
-  background-color: #ffffff;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Sombra más suave */
-  border-radius: 8px;
+  max-inline-size: 60%; /* Limita el ancho máximo del contenedor a 600px (ancho fijo). */
+  margin: 50px auto; /* Agrega un margen de 50px arriba y abajo, y centra el contenedor horizontalmente. */
+  padding: 20px; /* Agrega un espacio interno de 20px alrededor del contenido dentro del contenedor. */
+  background-color: #ffffff; /* Establece un fondo blanco para el contenedor. */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Aplica una sombra suave (desplazada 2px verticalmente) alrededor del contenedor. */
+  border-radius: 8px; /* Redondea las esquinas del contenedor con un radio de 8px. */
 }
 
 /* Título */
 .create-container h1 {
-  font-size: 24px;
-  margin-block-end: 20px;
-  color: #333333;
-  text-align: center;
+  font-size: 24px; /* Establece el tamaño de la fuente del título en 24px. */
+  margin-block-end: 20px; /* Agrega un margen inferior de 20px después del título. */
+  color: #333333; /* Establece el color del texto del título en gris oscuro. */
+  text-align: center; /* Centra el texto del título horizontalmente. */
 }
 
 /* Formulario */
 .create-container form {
-  margin-block-start: 20px;
+  margin-block-start: 20px; /* Agrega un margen superior de 20px antes del formulario. */
 }
 
 .create-container .form-label {
-  font-weight: bold;
-  color: #333333;
+  font-weight: bold; /* Hace que las etiquetas del formulario sean negritas. */
+  color: #333333; /* Establece el color de las etiquetas en gris oscuro. */
 }
 
 .create-container .form-control {
-  margin-block-end: 15px; /* Espaciado uniforme */
-  padding: 10px;
-  border-radius: 4px;
-  border: 1px solid #ced4da;
+  margin-block-end: 15px; /* Agrega un margen inferior de 15px para separar los campos del formulario. */
+  padding: 10px; /* Establece un relleno de 10px dentro de los campos de entrada. */
+  border-radius: 4px; /* Redondea las esquinas de los campos de entrada con un radio de 4px. */
+  border: 1px solid #ced4da; /* Define un borde gris claro alrededor de los campos de entrada. */
 }
 
 .create-container .form-control:focus {
-  border-color: #80bdff;
-  outline: none; /* Sin contorno */
-  box-shadow: 0 0 5px rgba(0, 123, 255, 0.25);
+  border-color: #80bdff; /* Cambia el color del borde a un azul claro cuando el campo recibe foco. */
+  outline: none; /* Elimina el contorno predeterminado del campo de entrada. */
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.25); /* Agrega una sombra azul tenue alrededor del campo al recibir foco. */
 }
 
 .create-container .invalid-feedback {
-  display: none;
-  color: #dc3545; 
+  display: none; /* Oculta los mensajes de error de forma predeterminada. */
+  color: #dc3545; /* Establece el color del texto de los mensajes de error en rojo. */
 }
 
 /* Botones */
 .create-container .btn-primary {
-  background-color: #007bff; 
-  border: none; 
-  color: white; 
-  padding: 10px; 
-  text-align: center; 
-  text-decoration: none; 
-  display: inline-block; 
-  font-size: 16px; 
-  margin-block-start: 10px; 
-  border-radius: 4px; 
-  cursor: pointer; 
+  background-color: #007bff; /* Define el color de fondo azul para el botón primario. */
+  border: none; /* Elimina cualquier borde predeterminado del botón. */
+  color: white; /* Establece el color del texto del botón en blanco. */
+  padding: 10px; /* Agrega 10px de relleno dentro del botón. */
+  text-align: center; /* Centra el texto dentro del botón. */
+  text-decoration: none; /* Elimina cualquier subrayado del texto. */
+  display: inline-block; /* Asegura que el botón se comporte como un elemento en línea con bloque. */
+  font-size: 16px; /* Establece el tamaño de la fuente del texto en el botón. */
+  margin-block-start: 10px; /* Agrega un margen superior de 10px antes del botón. */
+  border-radius: 4px; /* Redondea las esquinas del botón con un radio de 4px. */
+  cursor: pointer; /* Cambia el cursor a un puntero al pasar sobre el botón. */
 }
 
 .create-container .btn-primary:hover {
-  background-color: #0056b3; 
+  background-color: #0056b3; /* Cambia el color de fondo del botón a un azul más oscuro cuando se pasa el ratón sobre él. */
 }
 
 .create-container .btn-secondary {
-    background-color: #6c757d; 
-    border: none; 
-    color: white; 
-    padding:10px; 
-    text-align:center; 
-    text-decoration:none; 
-    display:inline-block; 
-    font-size:16px;
-    margin-block-start:10px; 
-    border-radius:4px; 
-    cursor:pointer; 
+  background-color: #6c757d; /* Define un color gris para el botón secundario. */
+  border: none; /* Elimina cualquier borde predeterminado del botón. */
+  color: white; /* Establece el color del texto en blanco. */
+  padding: 10px; /* Agrega 10px de relleno dentro del botón. */
+  text-align: center; /* Centra el texto dentro del botón. */
+  text-decoration: none; /* Elimina cualquier subrayado del texto. */
+  display: inline-block; /* Asegura que el botón se comporte como un elemento en línea con bloque. */
+  font-size: 16px; /* Establece el tamaño de la fuente del texto en el botón. */
+  margin-block-start: 10px; /* Agrega un margen superior de 10px antes del botón. */
+  border-radius: 4px; /* Redondea las esquinas del botón con un radio de 4px. */
+  cursor: pointer; /* Cambia el cursor a un puntero al pasar sobre el botón. */
 }
 
 .create-container .btn-secondary:hover {
-    background-color:#5a6268; 
+  background-color: #5a6268; /* Cambia el color de fondo a un gris más oscuro cuando se pasa el ratón sobre el botón. */
 }

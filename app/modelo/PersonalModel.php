@@ -8,7 +8,7 @@ class PersonalModel
     public function __construct()
     {
         $this->db = (new Database())->getConnection();
-    }
+    }    
 
     public function create($nombre, $apellidos, $usuario, $clave, $correo, $idTipo_Usuario, $idInstitucion)
     {
@@ -21,6 +21,24 @@ class PersonalModel
     public function read()
     {
         $result = $this->db->query("SELECT * FROM Personal");
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    //MÉTODO PARA BUSCAR UN REGISTRO
+    public function buscar($query)
+    {
+        $stmt = $this->db->prepare("
+            SELECT * 
+            FROM Personal 
+            WHERE Nombre LIKE ? 
+            OR Apellidos LIKE ? 
+            OR Usuario LIKE ? 
+            OR Correo LIKE ?
+        ");
+        $likeQuery = '%' . $query . '%';
+        $stmt->bind_param("ssss", $likeQuery, $likeQuery, $likeQuery, $likeQuery);
+        $stmt->execute();
+        $result = $stmt->get_result();
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
@@ -46,12 +64,31 @@ class PersonalModel
         return $stmt->get_result()->fetch_assoc();
     }
 
-    public function delete($idPersonal)
+    //SE ESTÁ MODIFICANDO ESTE SEGMENTO PARA MANEJAR ERROR DE BORRAR
+
+    /*public function delete($idPersonal)
     {
         $stmt = $this->db->prepare("DELETE FROM Personal WHERE idPersonal=?");
         $stmt->bind_param("i", $idPersonal);
         return $stmt->execute();
+    }*/
+
+    //SE ESTÁ MANEJANDO CON ESTE NUEVO SEGMENTO DE CÓDIGO / BORRAR EN CASO DE QUE FALLE
+    public function delete($idPersonal)
+    {
+        try {
+            $stmt = $this->db->prepare("DELETE FROM Personal WHERE idPersonal=?");
+            $stmt->bind_param("i", $idPersonal);
+            $stmt->execute();
+            return true; // Eliminación exitosa
+        } catch (mysqli_sql_exception $e) {
+            if ($e->getCode() == 1451) { // Código 1451 indica restricción de clave foránea
+                return false;
+            }
+            throw $e; // Re-lanzar otras excepciones
+        }
     }
+
 
     public function getInstituciones()
     {

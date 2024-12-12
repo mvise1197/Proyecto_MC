@@ -26,14 +26,31 @@ class PersonalController
         return $this->model->readById($idPersonal);
     }
 
+    //MÉTODO PARA BUSCAR UN REGISTRO
+    public function buscar($query){
+        return $this->model->buscar($query);
+    }
+
     public function update($data)
     {
         return $this->model->update($data['idPersonal'], $data['nombre'], $data['apellidos'], $data['usuario'], $data['correo'], $data['idTipo_Usuario'], $data['idInstitucion'], isset($data['clave']) ? $data['clave'] : null);
     }
 
-    public function delete($idPersonal)
+    //SE ESTÁ MODIFICANDO ESTE SEGMENTO PARA MANEJAR ERROR DE BORRAR
+
+    /*public function delete($idPersonal)
     {
         return $this->model->delete($idPersonal);
+    }*/
+
+    //SE ESTÁ MANEJANDO CON ESTE NUEVO SEGMENTO DE CÓDIGO / BORRAR EN CASO DE QUE FALLE
+    public function delete($idPersonal)
+    {
+        $resultado = $this->model->delete($idPersonal);
+        if (!$resultado) {
+            return ['success' => false, 'message' => 'No se puede eliminar este registro porque está relacionado con otros datos.'];
+        }
+        return ['success' => true, 'message' => 'Usuario eliminado exitosamente.'];
     }
 
     public function getInstituciones()

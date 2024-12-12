@@ -10,13 +10,19 @@ if (!isset($_SESSION['usuario'])) {
 require_once '../controlador/GradoController.php';
 $controller = new GradoController();
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['eliminar_id']) && is_numeric($_POST['eliminar_id'])) {
-    $controller->delete($_POST['eliminar_id']);
-    // Almacenar mensaje de éxito en la sesión
-    $_SESSION['mensaje'] = 'Grado eliminado exitosamente.';
-    // Redirigir a la lista de grados
-    header("Location: /app/vista/listargrados.php");
-    exit();
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['eliminar_id'])) {
+  $resultado = $controller->delete($_POST['eliminar_id']);
+  /*$controller->delete($_POST['eliminar_id']);
+  // Almacenar mensaje de éxito en la sesión
+  $_SESSION['mensaje'] = 'Grado eliminado exitosamente.';
+  // Redirigir a la lista de grados*/
+  if ($resultado['success']) {
+    $_SESSION['mensaje'] = $resultado['message'];
+  } else {
+    $_SESSION['error'] = $resultado['message'];
+  }
+  header("Location: /app/vista/listargrados.php");
+  exit();
 }
 
 // Obtener lista de grados
@@ -83,6 +89,18 @@ ob_start();
     </script>
     <?php unset($_SESSION['mensaje']); endif; ?>
 
+    <!-- Modificado: Mostrar mensajes de error -->
+    <?php if (isset($_SESSION['error'])): ?>
+    <script>
+        Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: '<?php echo $_SESSION['error']; ?>',
+            confirmButtonText: 'Aceptar'
+        });
+    </script>
+    <?php unset($_SESSION['error']); endif; ?>
+
 </div>
 
 <script src="../../public/js/bootstrap.bundle.min.js"></script>
@@ -102,7 +120,7 @@ ob_start();
       if (result.isConfirmed) {
         const form = document.createElement('form');
         form.method = 'POST';
-        form.action = ''; // Aquí puedes especificar la ruta deseada, si es necesario.
+        form.action = 'listargrados.php';
         
         const input = document.createElement('input');
         input.type = 'hidden';

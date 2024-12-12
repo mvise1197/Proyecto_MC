@@ -79,7 +79,7 @@ ob_start();
         </select>
       </div>
       <button type="submit" class="btn btn-primary">Actualizar</button>
-      <a href="listargrado.php" class="btn btn-secondary">Cancelar</a>
+      <a href="listargradoS.php" class="btn btn-secondary">Cancelar</a>
     </form>
 
     <!-- Script para manejar la respuesta del formulario -->

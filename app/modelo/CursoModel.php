@@ -44,16 +44,30 @@ class CursoModel
 
     // Método para eliminar un curso
     public function delete($idCurso)
-    {
+    /*{
         $stmt = $this->db->prepare("DELETE FROM Curso WHERE idCurso=?");
         $stmt->bind_param("i", $idCurso);
         return $stmt->execute();
+    }*/
+    
+    {
+        try {
+            $stmt = $this->db->prepare("DELETE FROM Curso WHERE idCurso=?");
+            $stmt->bind_param("i", $idCurso);
+            $stmt->execute();
+            return true; // Eliminación exitosa
+        } catch (mysqli_sql_exception $e) {
+            if ($e->getCode() == 1451) { // Código 1451 indica restricción de clave foránea
+                return false;
+            }
+            throw $e; // Re-lanzar otras excepciones
+        }
     }
 
     // Método para obtener los grados
     public function getGrados()
     {
-        $result = $this->db->query("SELECT idGrado, Nombre FROM Grado");
+        $result = $this->db->query("SELECT idGrado, Nombre_Grado FROM Grado");
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 }

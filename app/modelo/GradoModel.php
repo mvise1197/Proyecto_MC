@@ -39,11 +39,25 @@ class GradoModel
     }
 
     public function delete($idGrado)
-    {
+    /*{
         $stmt = $this->db->prepare("DELETE FROM Grado WHERE idGrado=?");
         $stmt->bind_param("i", $idGrado);
         return $stmt->execute();
+    }*/
+    {
+        try {
+            $stmt = $this->db->prepare("DELETE FROM Grado WHERE idGrado=?");
+            $stmt->bind_param("i", $idGrado);
+            $stmt->execute();
+            return true; // Eliminación exitosa
+        } catch (mysqli_sql_exception $e) {
+            if ($e->getCode() == 1451) { // Código 1451 indica restricción de clave foránea
+                return false;
+            }
+            throw $e; // Re-lanzar otras excepciones
+        }
     }
+    
 
     public function getInstituciones()
     {

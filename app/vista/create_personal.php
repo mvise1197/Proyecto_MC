@@ -85,7 +85,7 @@ ob_start();
         </select>
       </div>
       <button type="submit" class="btn btn-primary">Registrar</button>
-      <button type="button" onclick="cargarSeccion('usuarios')" class="btn btn-secondary">Cancelar</button>
+      <button type="button" onclick="cargarSeccion('personal')" class="btn btn-secondary">Cancelar</button>
     </form>
   </div>
 

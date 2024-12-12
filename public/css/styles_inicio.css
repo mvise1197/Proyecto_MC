@@ -1,228 +1,134 @@
 /* General */
-<<<<<<< HEAD
-
 .menu-logo {
-  display: flex;
-  align-items: center; /* Centra verticalmente */
-  inline-size: 100%; /* O el ancho que necesites */
+  display: flex; /* Usa flexbox para organizar los elementos dentro de .menu-logo */
+  align-items: center; /* Centra verticalmente los elementos dentro de .menu-logo */
+  inline-size: 100%; /* Establece el ancho del contenedor a 100% del ancho disponible */
 }
 
 .img_menu {
-  inline-size: 70%;
-  block-size: auto;
-  border-radius: 10px;
+  inline-size: 70%; /* Establece el ancho de la imagen a un 70% del contenedor */
+  block-size: auto; /* La altura de la imagen será automática para mantener la proporción */
+  border-radius: 10px; /* Redondea las esquinas de la imagen con un radio de 10px */
 }
 
-=======
->>>>>>> 6f556ae15c98317bf436de74194cc90e02347285
 body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-  display: flex;
-<<<<<<< HEAD
-  block-size: 100vh;
+  font-family: Arial, sans-serif; /* Establece la fuente de todo el cuerpo del documento */
+  margin: 0; /* Elimina el margen predeterminado alrededor del body */
+  padding: 0; /* Elimina el relleno predeterminado dentro del body */
+  display: flex; /* Usamos flexbox para organizar el contenido */
+  block-size: 100vh; /* Establece la altura del body a 100vh (la altura de la ventana del navegador) */
   overflow: hidden; /* Evita barras de desplazamiento no deseadas */
 }
 
 .container_fluid {
-  display: flex;
-  inline-size: 100%;
-  min-block-size: 100vh;
-=======
-  block-size: 100vh; /* Garantiza que el cuerpo ocupe toda la altura de la ventana */
-}
-
-.container {
-  display: flex;
-  inline-size: 100%; /* Ocupa todo el ancho disponible */
-  min-block-size: 100vh; /* Garantiza que el contenedor ocupe toda la altura */
->>>>>>> 6f556ae15c98317bf436de74194cc90e02347285
+  display: flex; /* Usa flexbox para organizar el contenido dentro de .container_fluid */
+  inline-size: 100%; /* El contenedor ocupa el 100% del ancho disponible */
+  min-block-size: 100vh; /* Establece una altura mínima de 100vh */
 }
 
 /* Botón para colapsar el menú */
 .menu-toggle {
-<<<<<<< HEAD
-  display: none;
-  position: absolute;
-  inset-block-start: 20px;
-  inset-inline-end: 20px;
-  background-color: #4f799d;
-  color: white;
-  border: none;
-  padding: 10px;
-  font-size: 20px;
-  cursor: pointer;
-  z-index: 1000;
-=======
-  display: none; /* Oculto por defecto en pantallas grandes */
-  position: absolute; /* Posición fija en la ventana */
-  inset-block-start: 20px; /* Distancia del borde superior */
-  inset-inline-end: 20px; /* Distancia del borde derecho */
-  background-color: #4f799d; /* Color de fondo */
-  color: white; /* Color del texto */
-  border: none; /* Sin bordes */
-  padding: 10px; /* Espaciado interno */
-  font-size: 20px; /* Tamaño del texto */
-  cursor: pointer; /* Cambia el cursor a "mano" */
-  z-index: 1000; /* Asegura que el botón esté por encima del contenido */
->>>>>>> 6f556ae15c98317bf436de74194cc90e02347285
+  display: none; /* El botón no será visible por defecto */
+  position: absolute; /* Lo posiciona absolutamente dentro del contenedor */
+  inset-block-start: 20px; /* Posiciona el botón 20px desde la parte superior */
+  inset-inline-end: 20px; /* Posiciona el botón 20px desde la derecha */
+  background-color: #4f799d; /* Establece un color de fondo azul para el botón */
+  color: white; /* Establece el color del texto en blanco */
+  border: none; /* Elimina el borde predeterminado */
+  padding: 10px; /* Agrega relleno dentro del botón */
+  font-size: 20px; /* Establece un tamaño de fuente grande para el texto */
+  cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+  z-index: 1000; /* Asegura que el botón esté encima de otros elementos */
 }
 
 /* Menú lateral */
 .sidebar {
-<<<<<<< HEAD
-  inline-size: 250px;
-  background-color: #4f799d;
-  color: #ecf0f1;
-  padding: 20px;
-  transition: transform 0.3s ease-in-out; /* Animación suave al abrir/cerrar */
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between; /* Distribuye contenido con espacio entre bloques */
-  block-size: 100vh; /* Asegura que ocupe toda la altura */
-  overflow-y: auto; /* Habilita desplazamiento si el contenido excede */
+  inline-size: 220px; /* Establece el ancho del menú lateral en 200px */
+  background-color: #4f799d; /* Establece el color de fondo del menú lateral en azul */
+  color: #ecf0f1; /* Establece el color del texto en el menú lateral */
+  padding: 20px; /* Agrega un relleno dentro del menú lateral */
+  transition: transform 0.3s ease-in-out; /* Animación suave para el deslizamiento del menú */
+  position: relative; /* Posiciona el menú dentro de su contenedor */
+  display: flex; /* Usa flexbox para organizar los elementos dentro del menú */
+  flex-direction: column; /* Organiza los elementos en una columna */
+  justify-content: space-between; /* Distribuye el contenido con espacio entre los bloques */
+  block-size: 100vh; /* Hace que el menú ocupe toda la altura de la ventana */
+  overflow-y: auto; /* Habilita el desplazamiento vertical si el contenido excede la altura */
 }
 
 /* Ajuste del último elemento (Cerrar Sesión) */
 .sidebar ul {
-  list-style: none; /* Sin puntos o numeración en la lista */
-  padding: 0; /* Elimina el padding de la lista */
-  flex: 1; /* Permite que la lista de opciones crezca y empuje el botón hacia abajo */
+  list-style: none; /* Elimina los estilos de lista predeterminados */
+  padding: 0; /* Elimina el relleno de la lista */
+  flex: 1; /* Permite que la lista crezca y empuje el botón hacia abajo */
 }
 
 .logout-btn {
-  margin-block-start: auto; /* Mueve el botón al final del contenedor */
-  padding: 10px;
-  background-color: #e74c3c; /* Color de fondo para destacarlo */
-  color: white;
-  text-align: center;
-  border-radius: 5px;
-  text-decoration: none;
-  display: block;
-  transition: background-color 0.3s;
+  margin-block-start: auto; /* Mueve el botón de "Cerrar sesión" al final del contenedor */
+  padding: 10px; /* Agrega relleno dentro del botón */
+  background-color: #e74c3c; /* Establece un color de fondo rojo para destacarlo */
+  color: white; /* Establece el color del texto en blanco */
+  text-align: center; /* Centra el texto dentro del botón */
+  border-radius: 5px; /* Redondea las esquinas del botón */
+  text-decoration: none; /* Elimina cualquier subrayado del texto */
+  display: block; /* Asegura que el botón se comporte como un bloque */
+  transition: background-color 0.3s; /* Suaviza el cambio de color de fondo */
 }
 
 .logout-btn:hover {
-  background-color: #c0392b;
+  background-color: #c0392b; /* Cambia el color de fondo a un rojo más oscuro cuando el ratón pasa sobre el botón */
 }
 
 .sidebar ul li {
-  margin: 10px 0;
+  margin: 10px 0; /* Agrega un margen vertical entre los elementos de la lista */
 }
 
 .sidebar ul li a {
-  text-decoration: none;
-  color: #ecf0f1;
-  display: block;
-  padding: 10px;
-  border-radius: 5px;
-  transition: background-color 0.3s;
+  text-decoration: none; /* Elimina el subrayado de los enlaces */
+  color: #ecf0f1; /* Establece el color de texto en los enlaces en blanco */
+  display: block; /* Hace que el enlace se comporte como un bloque */
+  padding: 10px; /* Agrega relleno dentro de los enlaces */
+  border-radius: 5px; /* Redondea las esquinas de los enlaces */
+  transition: background-color 0.3s; /* Suaviza el cambio de color de fondo */
 }
 
 .sidebar ul li a:hover {
-  background-color: #34495e;
-=======
-  inline-size: 250px; /* Ancho fijo del menú */
-  background-color: #4f799d; /* Color de fondo */
-  color: #ecf0f1; /* Color del texto */
-  padding: 20px; /* Espaciado interno */
-  transition: transform 0.3s ease-in-out; /* Animación suave al abrir/cerrar */
-  overflow-y: auto; /* Permite scroll vertical si el contenido excede el alto */
-  box-sizing: border-box; /* Incluye padding dentro del tamaño total */
-}
-
-.sidebar ul {
-  list-style: none; /* Sin puntos o numeración en la lista */
-  padding: 0; /* Elimina el padding de la lista */
-}
-
-.sidebar ul li {
-  margin: 10px 0; /* Espaciado entre los elementos de la lista */
-}
-
-.sidebar ul li a {
-  text-decoration: none; /* Sin subrayado en los enlaces */
-  color: #ecf0f1; /* Color del texto */
-  display: block; /* Hace que los enlaces ocupen todo el ancho */
-  padding: 10px; /* Espaciado interno de los enlaces */
-  border-radius: 5px; /* Bordes redondeados */
-  transition: background-color 0.3s; /* Transición suave al pasar el mouse */
-}
-
-.sidebar ul li a:hover {
-  background-color: #34495e; /* Color al pasar el mouse sobre los enlaces */
->>>>>>> 6f556ae15c98317bf436de74194cc90e02347285
+  background-color: #34495e; /* Cambia el color de fondo de los enlaces cuando se pasa el ratón sobre ellos */
 }
 
 /* Contenido principal */
 .main-content {
-<<<<<<< HEAD
-  flex: 1;
-  padding: 20px;
-  background-color: #ecf0f1;
-  overflow-y: auto; /* Permite el desplazamiento si el contenido excede la altura */
+  flex: 1; /* Hace que el contenido principal ocupe todo el espacio disponible */
+  padding: 20px; /* Agrega relleno dentro del contenido principal */
+  background-color: #ecf0f1; /* Establece un color de fondo gris claro para el contenido */
+  overflow-y: auto; /* Permite el desplazamiento vertical si el contenido excede la altura */
 }
 
 /* Responsivo */
 @media (max-width: 768px) {
   .menu-toggle {
-    display: block;
+    display: block; /* Muestra el botón de menú cuando la pantalla es pequeña */
   }
 
   .sidebar {
-    position: absolute;
-    inset-block-start: 0;
-    inset-inline-start: 0;
-    block-size: 100%;
-    transform: translateX(-100%);
-    z-index: 999;
-=======
-  flex: 1; /* Hace que el contenido principal ocupe el espacio restante */
-  padding: 20px; /* Espaciado interno */
-  background-color: #ecf0f1; /* Color de fondo */
-}
-
-#contenido h1 {
-  font-size: 24px; /* Tamaño del título */
-  color: #2c3e50; /* Color del texto del título */
-}
-
-/* Diseño adaptable (responsive) */
-@media (max-width: 768px) {
-  .menu-toggle {
-    display: block; /* Muestra el botón en pantallas pequeñas */
-  }
-
-  .sidebar {
-    position: absolute; /* Hace que el menú sea flotante */
-    inset-block-start: 0; /* Alinea el menú al borde superior */
-    inset-inline-start: 0; /* Alinea el menú al borde izquierdo */
-    block-size: 100%; /* Ocupa toda la altura de la pantalla */
-    transform: translateX(-100%); /* Oculta el menú inicialmente */
-    overflow-y: auto; /* Habilita el scroll vertical si el contenido excede el alto */
->>>>>>> 6f556ae15c98317bf436de74194cc90e02347285
-    box-sizing: border-box; /* Incluye el padding en el tamaño total */
+    position: absolute; /* Hace que el menú lateral sea posicionado absolutamente */
+    inset-block-start: 0; /* Posiciona el menú lateral desde la parte superior */
+    inset-inline-start: 0; /* Posiciona el menú lateral desde la izquierda */
+    block-size: 100%; /* Hace que el menú ocupe toda la altura */
+    transform: translateX(-100%); /* Inicialmente oculta el menú lateral moviéndolo a la izquierda */
+    z-index: 999; /* Asegura que el menú esté por encima de otros elementos */
+    box-sizing: border-box; /* Incluye el padding en el tamaño total del menú */
   }
 
   .sidebar.active {
-<<<<<<< HEAD
-    transform: translateX(0);
+    transform: translateX(0); /* Muestra el menú cuando tiene la clase 'active' */
   }
 
   .main-content {
-    padding: 10px;
-=======
-    transform: translateX(0); /* Muestra el menú cuando tiene la clase "active" */
-  }
-
-  .main-content {
-    padding: 10px; /* Reduce el padding en pantallas pequeñas */
->>>>>>> 6f556ae15c98317bf436de74194cc90e02347285
+    padding: 10px; /* Reduce el relleno en el contenido principal en pantallas pequeñas */
   }
 
   #contenido h1 {
-    font-size: 20px; /* Reduce el tamaño del texto del título */
+    font-size: 20px; /* Reduce el tamaño de la fuente del título en pantallas pequeñas */
   }
 }

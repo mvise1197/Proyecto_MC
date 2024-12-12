@@ -11,16 +11,31 @@ require_once '../controlador/PersonalController.php';
 $controller = new PersonalController();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['eliminar_id'])) {
-    $controller->delete($_POST['eliminar_id']);
-    // Almacenar mensaje de éxito en la sesión
-    $_SESSION['mensaje'] = 'Usuario eliminado exitosamente.';
-    // Redirigir a la lista de personal
-    header("Location: /app/vista/listarpersonal.php");
+    $resultado = $controller->delete($_POST['eliminar_id']);
+    
+    if ($resultado['success']) {
+        $_SESSION['mensaje'] = $resultado['message'];
+    } else {
+        $_SESSION['error'] = $resultado['message'];
+    }
+    // Redirigir a la misma página
+    header("Location: listarpersonal.php");
     exit();
 }
 
 // Obtener lista de personal
 $personales = $controller->read();
+
+//FRAGMENTO DE PRUEBA
+//VERIFICAR SI SE ENVIÓ EL TÉRMINO DE BUSQUEDA
+$query = isset($_GET["query"]) ? trim($_GET["query"]) :null;
+//OBTENER LISTA FILTRADA
+if($query){
+    $personales = $controller->buscar($query); //CON ESTE MÉTODO VOY A BUSCAR AL PERSONAL
+}
+else{
+    $personales = $controller->read();//SE OBTIENE TODA LA LISTA
+}
 
 // Configuración para la plantilla base
 $title = "Lista de Personal";
@@ -41,7 +56,19 @@ ob_start();
 <body>
 <div class="listar-container">
     <h1>Lista de Personal</h1>
-    <button onclick="cargarFormularioCrear('personal')" class="btn btn-primary mb-3">Registrar Nuevo Personal</button>
+    <div>
+        <div>
+            <button onclick="cargarFormularioCrear('personal')" class="btn btn-primary mb-3">Registrar Nuevo Personal</button>
+        </div>
+        <div>
+            <section id="buscar" class="mb-3">
+                <form method="get" action="listarpersonal.php">
+                    <input type="text" name="query" id="query" placeholder="Buscar Personal" class="form-control"/>
+                    <button type="submit" class="btn btn-primary mt-2">Buscar</button>
+                </form>
+            </section>
+        </div>
+    </div>
     <table class="table table-bordered">
         <thead>
             <tr>
@@ -83,6 +110,18 @@ ob_start();
     </script>
     <?php unset($_SESSION['mensaje']); endif; ?>
 
+    <!-- Modificado: Mostrar mensajes de error -->
+    <?php if (isset($_SESSION['error'])): ?>
+    <script>
+        Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: '<?php echo $_SESSION['error']; ?>',
+            confirmButtonText: 'Aceptar'
+        });
+    </script>
+    <?php unset($_SESSION['error']); endif; ?>
+
 </div>
 
 <script src="../../public/js/bootstrap.bundle.min.js"></script>
@@ -102,8 +141,7 @@ ob_start();
       if (result.isConfirmed) {
         const form = document.createElement('form');
         form.method = 'POST';
-        form.action = ''; // Aquí puedes especificar la ruta deseada, si es necesario.
-        
+        form.action = 'listarpersonal.php';
         const input = document.createElement('input');
         input.type = 'hidden';
         input.name = 'eliminar_id';
