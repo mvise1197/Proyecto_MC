@@ -25,6 +25,23 @@ class CursoModel
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
+    //MÉTODO PARA BUSCAR UN REGISTRO
+    public function buscar($query)
+    {
+        $stmt = $this->db->prepare("
+            SELECT * 
+            FROM Curso
+            WHERE idCurso LIKE ?
+            OR Nombre_Curso LIKE ? 
+            OR idGrado LIKE ?
+        ");
+        $likeQuery = '%' . $query . '%';
+        $stmt->bind_param("sss", $likeQuery, $likeQuery, $likeQuery);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
     // Método para actualizar un curso
     public function update($idCurso, $nombreCurso, $idGrado)
     {

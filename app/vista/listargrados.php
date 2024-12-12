@@ -12,10 +12,6 @@ $controller = new GradoController();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['eliminar_id'])) {
   $resultado = $controller->delete($_POST['eliminar_id']);
-  /*$controller->delete($_POST['eliminar_id']);
-  // Almacenar mensaje de éxito en la sesión
-  $_SESSION['mensaje'] = 'Grado eliminado exitosamente.';
-  // Redirigir a la lista de grados*/
   if ($resultado['success']) {
     $_SESSION['mensaje'] = $resultado['message'];
   } else {
@@ -27,6 +23,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['eliminar_id'])) {
 
 // Obtener lista de grados
 $grados = $controller->read();
+
+//FRAGMENTO DE PRUEBA
+//VERIFICAR SI SE ENVIÓ EL TÉRMINO DE BUSQUEDA
+$query = isset($_GET["query"]) ? trim($_GET["query"]) :null;
+//OBTENER LISTA FILTRADA
+if($query){
+    $grados = $controller->buscar($query); //CON ESTE MÉTODO VOY A BUSCAR AL PERSONAL
+}
+else{
+    $grados = $controller->read();//SE OBTIENE TODA LA LISTA
+}
 
 // Configuración para la plantilla base
 $title = "Lista de Grados";
@@ -47,7 +54,19 @@ ob_start();
 <body>
 <div class="listar-container">
     <h1>Lista de Grados</h1>
-    <button onclick="cargarFormularioCrear('grados')" class="btn btn-primary mb-3">Registrar Nuevo Grado</button>
+    <div>
+        <div>
+          <button onclick="cargarFormularioCrear('grados')" class="btn btn-primary mb-3">Registrar Nuevo Grado</button>
+        </div>
+        <div>
+            <section id="buscar" class="mb-3">
+                <form method="get" action="listargrados.php">
+                    <input type="text" name="query" id="query" placeholder="Buscar Grado" class="form-control"/>
+                    <button type="submit" class="btn btn-primary mt-2">Buscar</button>
+                </form>
+            </section>
+        </div>
+    </div>
     <table class="table table-bordered">
         <thead>
             <tr>
@@ -55,7 +74,7 @@ ob_start();
                 <th>Nombre del Grado</th>
                 <th>Sección</th>
                 <th>Profesor Tutor</th>
-                <th>ID Institución</th>
+                <th>Institución</th>
                 <th>Acciones</th>
             </tr>
         </thead>
@@ -66,7 +85,7 @@ ob_start();
                 <td><?php echo htmlspecialchars($grado['Nombre_Grado']); ?></td>
                 <td><?php echo htmlspecialchars($grado['Seccion']); ?></td>
                 <td><?php echo htmlspecialchars($grado['Tutor']); ?></td>
-                <td><?php echo htmlspecialchars($grado['idInstitucion']); ?></td>
+                <td><?php echo htmlspecialchars($grado['Nombre_Institucion']); ?></td>
                 <td>
                     <!-- Botón Editar -->
                     <a href="update_grado.php?id=<?php echo $grado['idGrado']; ?>" class="btn btn-warning">✏️</a>

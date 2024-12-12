@@ -18,7 +18,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['eliminar_id'])) {
     } else {
         $_SESSION['error'] = $resultado['message'];
     }
-    // Redirigir a la misma página
     header("Location: listarpersonal.php");
     exit();
 }
@@ -67,6 +66,9 @@ ob_start();
                     <button type="submit" class="btn btn-primary mt-2">Buscar</button>
                 </form>
             </section>
+        </div>
+        <div>
+            <a href="reporte_personal.php" class="btn btn-success mb-3">Generar Reporte PDF</a>
         </div>
     </div>
     <table class="table table-bordered">

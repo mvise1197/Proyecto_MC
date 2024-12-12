@@ -27,6 +27,11 @@ class EstudianteController
         return $this->model->readById($idEstudiante);
     }
 
+    //MÉTODO PARA BUSCAR UN REGISTRO
+    public function buscar($query){
+        return $this->model->buscar($query);
+    }
+
     public function update($data)
     {
         // Modificado para coincidir con los datos de la tabla Estudiante

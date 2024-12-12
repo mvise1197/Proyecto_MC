@@ -121,6 +121,20 @@ body {
     cursor: pointer; /* Cambia el cursor a mano al pasar por encima */
 }
 
+.password-container {
+    position: relative; /* Posicionamiento relativo para el contenedor */
+}
+ 
+.eye-icon {
+    position: absolute; /* Posicionamiento absoluto para el ícono */
+    inset-inline-end: 10px; /* Espaciado desde la derecha */
+    inset-block-start: 50%; /* Centrado verticalmente */
+    transform: translateY(-50%); /* Ajuste para centrar */
+    cursor: pointer; /* Cambia el cursor al pasar por encima */
+}
+ 
+ 
+
 /* Efecto hover para el botón de login */
 .login-btn:hover {
     background-color: #5848c2; /* Cambia el color de fondo al pasar el cursor */

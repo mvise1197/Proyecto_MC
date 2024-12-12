@@ -19,13 +19,17 @@
                 </div>
                 <div class="input-group">
                     <label for="password">Contraseña</label>
-                    <input type="password" id="password" name="password" placeholder="Ingresa tu Contraseña" required>
+                    <div class="password-container">
+                        <input type="password" id="password" name="password" placeholder="Ingresa tu Contraseña" required>
+                        <span id="togglePassword" class="eye-icon">👁️‍🗨️</span>
+                    </div>
                 </div>
+                <div class="g-recaptcha" data-sitekey="6LfhVpkqAAAAAIi6fsp9Lvb1CcE3KW2IiKDyk-T1"></div>
                 <div class="options">
                     <label>
                         <input type="checkbox"> Recordar
                     </label>
-                    <a href="../vista/recuperar_contraseNa.php">¿Olvidaste tu contraseña?</a>
+                    <a href="../vista/recuperar_contraseña.php">¿Olvidaste tu contraseña?</a>
                 </div>
                 <button type="submit" class="login-btn">Iniciar Sesión</button>
                 <!-- Botón para redirigir a la página de registro -->
@@ -39,15 +43,31 @@
                     </p>
                 </div>
             </form>
-
+ 
             <?php if (isset($_GET['error'])): ?>
-                <p style="color: red;">Credenciales incorrectas. Por favor intenta nuevamente.</p>
+                <?php if ($_GET['error'] == 'recaptcha'): ?>
+                    <p style="color: red;">Por favor verifica que no eres un robot.</p>
+                <?php else: ?>
+                    <p style="color: red;">Credenciales incorrectas. Por favor intenta nuevamente.</p>
+                <?php endif; ?>
             <?php endif; ?>
-
+ 
             <?php if (isset($_GET['registered'])): ?>
                 <p style="color: green;">Registro exitoso. Ahora puedes iniciar sesión.</p>
             <?php endif; ?>
         </div>
     </div>
+ 
+    <script>
+        document.getElementById('togglePassword').addEventListener('click', function () {
+            const passwordInput = document.getElementById('password');
+            const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+            passwordInput.setAttribute('type', type);
+           
+            // Cambiar el ícono según el estado
+            this.textContent = type === 'password' ? '👁️‍🗨️' : '👁️'; // Ojo cerrado y ojo abierto
+        });
+    </script>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </body>
 </html>

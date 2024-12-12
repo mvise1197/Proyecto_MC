@@ -11,10 +11,6 @@ require_once '../controlador/CursoController.php';
 $controller = new CursoController();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['eliminar_id'])) {
-    /*$controller->delete($_POST['eliminar_id']);
-    // Almacenar mensaje de éxito en la sesión
-    $_SESSION['mensaje'] = 'Curso eliminado exitosamente.';
-    // Redirigir a la lista de cursos*/
     $resultado = $controller->delete($_POST['eliminar_id']);
     
     if ($resultado['success']) {
@@ -28,6 +24,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['eliminar_id'])) {
 
 // Obtener lista de cursos
 $cursos = $controller->read();
+
+//FRAGMENTO DE PRUEBA
+//VERIFICAR SI SE ENVIÓ EL TÉRMINO DE BUSQUEDA
+$query = isset($_GET["query"]) ? trim($_GET["query"]) :null;
+//OBTENER LISTA FILTRADA
+if($query){
+    $cursos = $controller->buscar($query); //CON ESTE MÉTODO VOY A BUSCAR AL PERSONAL
+}
+else{
+    $cursos = $controller->read();//SE OBTIENE TODA LA LISTA
+}
 
 // Configuración para la plantilla base
 $title = "Lista de Cursos";
@@ -48,7 +55,19 @@ ob_start();
 <body>
 <div class="listar-container">
     <h1>Lista de Cursos</h1>
-    <button onclick="cargarFormularioCrear('curso')" class="btn btn-primary mb-3">Registrar Nuevo Curso</button>
+    <div>
+        <div>
+            <button onclick="cargarFormularioCrear('curso')" class="btn btn-primary mb-3">Registrar Nuevo Curso</button>
+        </div>
+        <div>
+            <section id="buscar" class="mb-3">
+                <form method="get" action="listarcurso.php">
+                    <input type="text" name="query" id="query" placeholder="Buscar Curso" class="form-control"/>
+                    <button type="submit" class="btn btn-primary mt-2">Buscar</button>
+                </form>
+            </section>
+        </div>
+    </div>
     <table class="table table-bordered">
         <thead>
             <tr>
@@ -63,7 +82,7 @@ ob_start();
             <tr>
                 <td><?php echo htmlspecialchars($curso['idCurso']); ?></td>
                 <td><?php echo htmlspecialchars($curso['Nombre_Curso']); ?></td>
-                <td><?php echo htmlspecialchars($curso['idGrado']); ?></td> <!-- Suponiendo que idGrado es un valor representativo del grado -->
+                <td><?php echo htmlspecialchars($curso['idGrado']); ?></td>
                 <td>
                     <!-- Botón Editar -->
                     <a href="update_curso.php?id=<?php echo $curso['idCurso']; ?>" class="btn btn-warning">✏️</a>

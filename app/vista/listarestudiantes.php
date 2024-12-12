@@ -26,6 +26,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['eliminar_id'])) {
 // Obtener lista de estudiantes
 $estudiantes = $controller->read();
 
+//FRAGMENTO DE PRUEBA
+//VERIFICAR SI SE ENVIÓ EL TÉRMINO DE BUSQUEDA
+$query = isset($_GET["query"]) ? trim($_GET["query"]) :null;
+//OBTENER LISTA FILTRADA
+if($query){
+    $estudiantes = $controller->buscar($query); //CON ESTE MÉTODO VOY A BUSCAR AL PERSONAL
+}
+else{
+    $estudiantes = $controller->read();//SE OBTIENE TODA LA LISTA
+}
+
 // Configuración para la plantilla base
 $title = "Lista de Estudiantes";
 ob_start();
@@ -45,7 +56,19 @@ ob_start();
 <body>
 <div class="listar-container">
     <h1>Lista de Estudiantes</h1>
-    <button onclick="cargarFormularioCrear('estudiante')" class="btn btn-primary mb-3">Registrar Nuevo Estudiante</button>
+    <div>
+        <div>
+            <button onclick="cargarFormularioCrear('estudiante')" class="btn btn-primary mb-3">Registrar Nuevo Estudiante</button>
+        </div>
+        <div>
+            <section id="buscar" class="mb-3">
+                <form method="get" action="listarestudiantes.php">
+                    <input type="text" name="query" id="query" placeholder="Buscar Estudiante" class="form-control"/>
+                    <button type="submit" class="btn btn-primary mt-2">Buscar</button>
+                </form>
+            </section>
+        </div>
+    </div>
     <table class="table table-bordered">
         <thead>
             <tr>

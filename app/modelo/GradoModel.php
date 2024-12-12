@@ -19,9 +19,35 @@ class GradoModel
 
     public function read()
     {
-        $result = $this->db->query("SELECT * FROM Grado");
+        $query = "
+        SELECT g.idGrado, g.Nombre_Grado, g.Seccion, g.Tutor, i.Nombre AS Nombre_Institucion
+        FROM Grado g
+        INNER JOIN Institucion i ON g.idInstitucion = i.idInstitucion
+        ";
+        $result = $this->db->query($query);
         return $result->fetch_all(MYSQLI_ASSOC);
     }
+
+    //MÉTODO PARA BUSCAR UN REGISTRO
+    public function buscar($query)
+    {
+        $stmt = $this->db->prepare("
+            SELECT g.idGrado, g.Nombre_Grado, g.Seccion, g.Tutor, i.Nombre AS Nombre_Institucion
+            FROM Grado g
+            INNER JOIN Institucion i ON g.idInstitucion = i.idInstitucion
+            WHERE g.idGrado LIKE ? 
+            OR g.Nombre_Grado LIKE ? 
+            OR g.Seccion LIKE ? 
+            OR g.Tutor LIKE ? 
+            OR i.Nombre LIKE ? -- Buscar también por nombre de la institución
+        ");
+        $likeQuery = '%' . $query . '%';
+        $stmt->bind_param("sssss", $likeQuery, $likeQuery, $likeQuery, $likeQuery, $likeQuery);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
 
     public function update($idGrado, $Nombre_Grado, $Seccion, $Tutor, $idInstitucion)
     {

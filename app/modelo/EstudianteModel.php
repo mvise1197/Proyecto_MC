@@ -24,6 +24,26 @@ class EstudianteModel
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
+    //MÉTODO PARA BUSCAR UN REGISTRO
+    public function buscar($query)
+    {
+        $stmt = $this->db->prepare("
+            SELECT * 
+            FROM Estudiante 
+            WHERE idEstudiante LIKE ? 
+            OR Nombre LIKE ?
+            OR Apellidos LIKE ? 
+            OR DNI LIKE ? 
+            OR Codigo_Est LIKE ? 
+            OR idGrado LIKE ?
+        ");
+        $likeQuery = '%' . $query . '%';
+        $stmt->bind_param("ssssss", $likeQuery, $likeQuery, $likeQuery, $likeQuery, $likeQuery, $likeQuery);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
     public function update($idEstudiante, $nombre, $apellidos, $dni, $codigo_est, $idGrado)
     {
         $stmt = $this->db->prepare("UPDATE Estudiante SET Nombre=?, Apellidos=?, DNI=?, Codigo_Est=?, idGrado=? WHERE idEstudiante=?");

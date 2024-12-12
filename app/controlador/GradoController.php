@@ -27,6 +27,11 @@ class GradoController
         return $this->model->readById($idGrado);
     }
 
+    //MÉTODO PARA BUSCAR UN REGISTRO
+    public function buscar($query){
+        return $this->model->buscar($query);
+    }
+
     public function update($data)
     {
         // Actualización para que coincida con los campos de la tabla Grado

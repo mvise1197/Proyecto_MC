@@ -23,18 +23,18 @@ if (isset($_GET['id'])) {
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $data = [
         'idPersonal' => $id,
-        'nombre' => $_POST['nombre'],
-        'apellidos' => $_POST['apellidos'],
-        'usuario' => $_POST['usuario'],
-        'clave' => $_POST['clave'], // Este campo ya no será requerido
-        'correo' => $_POST['correo'],
+        'Nombre' => $_POST['nombre'],
+        'Apellidos' => $_POST['apellidos'],
+        'Usuario' => $_POST['usuario'],
+        'Clave' => $_POST['clave'],
+        'Correo' => $_POST['correo'],
         'idTipo_Usuario' => $_POST['idTipo_Usuario'],
         'idInstitucion' => $_POST['idInstitucion']
     ];
     
     // Actualiza el personal, pasando la clave solo si no está vacía
     if (empty($data['clave'])) {
-        unset($data['clave']); // Elimina la clave si está vacía
+        unset($data['clave']);
     }
     
     $controller->update($data);

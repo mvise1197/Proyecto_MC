@@ -28,6 +28,11 @@ class CursoController
         return $this->model->readById($idCurso);
     }
 
+    //MÉTODO PARA BUSCAR UN REGISTRO
+    public function buscar($query){
+        return $this->model->buscar($query);
+    }
+
     // Método para actualizar un curso
     public function update($data)
     {
