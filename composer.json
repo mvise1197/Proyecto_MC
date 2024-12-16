@@ -1,0 +1,17 @@
+{
+    "autoload": {
+        "classmap": [
+            "app/"
+        ],
+        "exclude-from-classmap": [
+            "app/libs/fpdf/tutorial/tuto2.php",
+            "app/libs/fpdf/tutorial/tuto3.php",
+            "app/libs/fpdf/tutorial/tuto4.php",
+            "app/libs/fpdf/tutorial/tuto5.php",
+            "app/libs/fpdf/tutorial/tuto6.php"
+        ]
+},
+    "require-dev": {
+        "phpunit/phpunit": "^11.5"
+    }
+}

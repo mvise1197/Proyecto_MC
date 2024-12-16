@@ -64,15 +64,6 @@ class PersonalModel
         return $stmt->get_result()->fetch_assoc();
     }
 
-    //SE ESTÁ MODIFICANDO ESTE SEGMENTO PARA MANEJAR ERROR DE BORRAR
-
-    /*public function delete($idPersonal)
-    {
-        $stmt = $this->db->prepare("DELETE FROM Personal WHERE idPersonal=?");
-        $stmt->bind_param("i", $idPersonal);
-        return $stmt->execute();
-    }*/
-
     //SE ESTÁ MANEJANDO CON ESTE NUEVO SEGMENTO DE CÓDIGO / BORRAR EN CASO DE QUE FALLE
     public function delete($idPersonal)
     {

@@ -1,5 +1,38 @@
 
-  function cargarSeccion(seccion) {
+document.addEventListener('DOMContentLoaded', () => {
+  //=================== MENÚ DESPLEGABLE ===================
+  const menuToggle = document.getElementById('menu-toggle');
+  const sidebar = document.querySelector('.sidebar');
+
+  // Alternar la clase 'active' en el menú al hacer clic en el botón
+  menuToggle.addEventListener('click', (event) => {
+    sidebar.classList.toggle('active');
+    event.stopPropagation(); // Evitar que el evento se propague al documento
+  });
+
+  // Cerrar el menú al hacer clic fuera de él
+  document.addEventListener('click', (event) => {
+    // Verifica si el clic ocurrió fuera del menú y del botón
+    if (!sidebar.contains(event.target) && !menuToggle.contains(event.target)) {
+      sidebar.classList.remove('active');
+    }
+  });
+
+  // Manejo de submenús desplegables
+  document.querySelectorAll('.has-submenu > a').forEach(item => {
+    item.addEventListener('click', function (e) {
+      e.preventDefault(); // Evita navegación
+      const submenu = this.nextElementSibling;
+      const parent = this.parentElement;
+
+      // Alternar visualización del submenú
+      submenu.style.display = submenu.style.display === 'block' ? 'none' : 'block';
+      parent.classList.toggle('open');
+    });
+  });
+
+  //=================== CARGAR SECCIONES ===================
+  window.cargarSeccion = function (seccion) {
     const contenido = document.getElementById("contenido");
 
     let url = '';
@@ -41,7 +74,7 @@
       .then(html => {
         const parser = new DOMParser();
         const doc = parser.parseFromString(html, 'text/html');
-        
+
         // Aquí asumimos que el contenido específico está dentro del elemento con ID 'contenido'
         const nuevoContenido = doc.getElementById('contenido').innerHTML;
 
@@ -51,12 +84,12 @@
         console.error('Error al cargar la sección:', error);
         contenido.innerHTML = `<h1>Error</h1><p>No se pudo cargar la sección.</p>`;
       });
-  }
+  };
 
-  //============== SCRIPT PARA CARGAR LOS FORMULARIOS "CREAR" ==============
-  function cargarFormularioCrear(tipoFormulario) {
+  //=================== CARGAR FORMULARIOS ===================
+  window.cargarFormularioCrear = function (tipoFormulario) {
     const contenido = document.querySelector('#contenido');
-    
+
     // Limpia el contenido existente
     contenido.innerHTML = '';
 
@@ -78,9 +111,9 @@
       case 'asistencia':
         urlFormulario = 'create_asistencia.php';
         break;
-        case 'nota':
-          urlFormulario = 'create_nota.php';
-          break;
+      case 'nota':
+        urlFormulario = 'create_nota.php';
+        break;
       case 'reportes':
         urlFormulario = 'create_reportes.php';
         break;
@@ -90,38 +123,18 @@
 
     // Cargar el formulario con fetch
     fetch(urlFormulario)
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Error al cargar el formulario');
-            }
-            return response.text();
-        })
-        .then(html => {
-            contenido.innerHTML = html;
-        })
-        .catch(error => {
-            console.error('Error al cargar el formulario de creación:', error);
-            contenido.innerHTML = `<h1>Error</h1><p>No se pudo cargar el formulario.</p>`;
-        });
-  }
-
-  //============== SCRIPT PARA PONER EN FUNCIÓN EL MENÚ DESPLEGABLE ==============
-  // scripts.js
-  document.addEventListener('DOMContentLoaded', () => {
-    const menuToggle = document.getElementById('menu-toggle');
-    const sidebar = document.querySelector('.sidebar');
-
-    // Alternar la clase 'active' en el menú al hacer clic en el botón
-    menuToggle.addEventListener('click', (event) => {
-      sidebar.classList.toggle('active');
-      event.stopPropagation(); // Evitar que el evento se propague al documento
-    });
-
-    // Cerrar el menú al hacer clic fuera de él
-    document.addEventListener('click', (event) => {
-      // Verifica si el clic ocurrió fuera del menú y del botón
-      if (!sidebar.contains(event.target) && !menuToggle.contains(event.target)) {
-        sidebar.classList.remove('active');
-      }
-    });
-  });
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Error al cargar el formulario');
+        }
+        return response.text();
+      })
+      .then(html => {
+        contenido.innerHTML = html;
+      })
+      .catch(error => {
+        console.error('Error al cargar el formulario de creación:', error);
+        contenido.innerHTML = `<h1>Error</h1><p>No se pudo cargar el formulario.</p>`;
+      });
+  };
+});

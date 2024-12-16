@@ -36,13 +36,6 @@ class PersonalController
         return $this->model->update($data['idPersonal'], $data['nombre'], $data['apellidos'], $data['usuario'], $data['correo'], $data['idTipo_Usuario'], $data['idInstitucion'], isset($data['clave']) ? $data['clave'] : null);
     }
 
-    //SE ESTÁ MODIFICANDO ESTE SEGMENTO PARA MANEJAR ERROR DE BORRAR
-
-    /*public function delete($idPersonal)
-    {
-        return $this->model->delete($idPersonal);
-    }*/
-
     //SE ESTÁ MANEJANDO CON ESTE NUEVO SEGMENTO DE CÓDIGO / BORRAR EN CASO DE QUE FALLE
     public function delete($idPersonal)
     {

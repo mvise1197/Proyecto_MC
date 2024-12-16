@@ -4,223 +4,254 @@
 
 /* Estilo para la imagen de fondo del formulario de login */
 .login-image {
-    inline-size: 100%; /* Ancho completo */
-    block-size: auto; /* Alto automático según la imagen */
-    margin-block-end: 0; /* Elimina el margen inferior */
-    border-radius: 10px 10px 0 0; /* Bordes redondeados en la parte superior */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0); /* No hay sombra */
-    object-fit: cover; /* La imagen cubre todo el contenedor sin distorsionarse */
+    inline-size: 100%;
+    block-size: auto;
+    margin-block-end: 0;
+    border-radius: 10px 10px 0 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0);
+    object-fit: cover;
 }
 
 /* Estilos generales para el body */
 body {
-    margin: 0; /* Elimina los márgenes predeterminados del body */
-    padding: 0; /* Elimina los padding predeterminados */
-    font-family: 'Arial', sans-serif; /* Define la fuente general */
-    display: flex; /* Utiliza el modelo de caja flexible para alinear elementos */
-    justify-content: center; /* Centra el contenido horizontalmente */
-    align-items: center; /* Centra el contenido verticalmente */
-    block-size: 100vh; /* Establece la altura del body al 100% de la pantalla */
-    background: url(../img/fondo.png) no-repeat center center/cover; /* Aplica una imagen de fondo */
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    block-size: 100vh;
+    background: url(../img/fondo.png) no-repeat center center/cover;
 }
 
 /* Contenedor principal del formulario de login */
 .login-container {
-    display: flex; /* Usa el modelo de caja flexible */
-    justify-content: center; /* Centra los elementos horizontalmente */
-    align-items: center; /* Centra los elementos verticalmente */
-    inline-size: 100%; /* El ancho del contenedor es 100% */
-    max-inline-size: 500px; /* Limita el ancho máximo del contenedor */
-    background: rgba(255, 255, 255, 0.85); /* Fondo blanco semi-transparente */
-    border-radius: 10px; /* Bordes redondeados */
-    box-shadow: 0 8px 50px rgba(0, 0, 0, 0.2); /* Sombra suave alrededor del contenedor */
-    padding: 20px; /* Relleno interno */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    inline-size: 100%;
+    max-inline-size: 500px;
+    background: rgba(255, 255, 255, 0.85);
+    border-radius: 10px;
+    box-shadow: 0 8px 50px rgba(0, 0, 0, 0.2);
+    padding: 20px;
 }
 
 /* Estilos para el contenedor del formulario de registro */
 .register-container {
-    display: flex; /* Usa el modelo de caja flexible */
-    flex-direction: column; /* Organiza los elementos en una columna */
-    justify-content: center; /* Centra los elementos verticalmente */
-    align-items: center; /* Centra los elementos horizontalmente */
-    inline-size: 100%; /* El ancho del contenedor es 100% */
-    max-inline-size: 500px; /* Limita el ancho máximo del contenedor */
-    background: rgba(255, 255, 255, 0.85); /* Fondo blanco semi-transparente */
-    border-radius: 10px; /* Bordes redondeados */
-    box-shadow: 0 8px 50px rgba(0, 0, 0, 0.2); /* Sombra suave alrededor del contenedor */
-    padding: 20px; /* Relleno interno */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    inline-size: 100%;
+    max-inline-size: 500px;
+    background: rgba(255, 255, 255, 0.85);
+    border-radius: 10px;
+    box-shadow: 0 8px 50px rgba(0, 0, 0, 0.2);
+    padding: 20px;
 }
 
 /* Estilo para la tarjeta de login */
 .login-card {
-    inline-size: 100%; /* Ancho completo */
-    text-align: center; /* Centra el texto dentro de la tarjeta */
+    inline-size: 100%;
+    text-align: center;
 }
 
 /* Estilo para el título principal (h2) */
 .login-card h2 {
-    margin-block-end: 20px; /* Añade un margen inferior */
-    font-size: 24px; /* Tamaño de fuente */
-    color: #555; /* Color gris para el texto */
+    margin-block-end: 20px;
+    font-size: 24px;
+    color: #555;
 }
 
 /* Estilo para los grupos de entradas (input) */
 .input-group {
-    margin-block-end: 20px; /* Añade un margen inferior */
-    text-align: start; /* Alinea el texto de la etiqueta a la izquierda */
+    margin-block-end: 20px;
+    text-align: start;
 }
 
 /* Estilo para las etiquetas de los campos de entrada (label) */
 .input-group label {
-    display: block; /* Hace que las etiquetas sean bloques */
-    font-size: 14px; /* Tamaño de fuente */
-    margin-block-end: 5px; /* Margen inferior de 5px */
-    color: #333; /* Color gris oscuro para las etiquetas */
+    display: block;
+    font-size: 14px;
+    margin-block-end: 5px;
+    color: #333;
 }
 
 /* Estilo para los campos de entrada (input) */
 .input-group input {
-    inline-size: 96%; /* El campo de entrada ocupa el 96% del ancho disponible */
-    padding: 10px; /* Relleno dentro del campo */
-    border: 1px solid #ccc; /* Borde gris claro */
-    border-radius: 5px; /* Bordes redondeados */
-    font-size: 16px; /* Tamaño de fuente */
+    inline-size: 96%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
 }
 
 /* Estilo para las opciones (links) en el formulario */
 .options {
-    display: flex; /* Usamos flexbox para organizar los elementos */
-    justify-content: space-between; /* Distribuye las opciones con espacio entre ellas */
-    align-items: center; /* Alinea verticalmente */
-    margin-block-end: 20px; /* Añade un margen inferior */
-    font-size: 14px; /* Tamaño de fuente */
-    color: #777; /* Color gris claro */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-block-end: 20px;
+    font-size: 14px;
+    color: #777;
 }
 
 /* Estilo para los enlaces dentro de las opciones */
 .options a {
-    text-decoration: none; /* Elimina el subrayado de los enlaces */
-    color: #6c63ff; /* Color violeta para los enlaces */
+    text-decoration: none;
+    color: #6c63ff;
 }
 
 /* Efecto hover para los enlaces */
 .options a:hover {
-    text-decoration: underline; /* Subraya el enlace cuando el cursor pasa por encima */
+    text-decoration: underline;
 }
 
 /* Estilo para los botones de login y registro */
-.login-btn,
-.register_btn {
-    inline-size: 100%; /* El botón ocupa todo el ancho */
-    padding: 10px; /* Relleno interno del botón */
-    border: none; /* Elimina el borde */
-    border-radius: 5px; /* Bordes redondeados */
-    background-color: #6c63ff; /* Color de fondo violeta */
-    color: white; /* Color del texto en blanco */
-    font-size: 16px; /* Tamaño de fuente */
-    cursor: pointer; /* Cambia el cursor a mano al pasar por encima */
-}
-
-.password-container {
-    position: relative; /* Posicionamiento relativo para el contenedor */
-}
- 
-.eye-icon {
-    position: absolute; /* Posicionamiento absoluto para el ícono */
-    inset-inline-end: 10px; /* Espaciado desde la derecha */
-    inset-block-start: 50%; /* Centrado verticalmente */
-    transform: translateY(-50%); /* Ajuste para centrar */
-    cursor: pointer; /* Cambia el cursor al pasar por encima */
-}
- 
- 
-
-/* Efecto hover para el botón de login */
-.login-btn:hover {
-    background-color: #5848c2; /* Cambia el color de fondo al pasar el cursor */
+.login-btn,.register_btn {
+    inline-size: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #6c63ff;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
 }
 
 /* Estilo para el mensaje de éxito o error */
 .success-message,
 .error-message {
-   text-align: center; /* Centra el texto */
-   margin-block-start: 10px; /* Añade un margen superior */
-   font-size: 14px; /* Tamaño de fuente */
+   text-align: center;
+   margin-block-start: 10px;
+   font-size: 14px;
 }
 
 /* Estilo para el mensaje de éxito */
 .success-message {
-   color: green; /* Color verde para el éxito */
+   color: green;
 }
 
 /* Estilo para el mensaje de error */
 .error-message {
-   color: red; /* Color rojo para los errores */
+   color: red;
 }
 
 /* Estilo para el botón de retroceso (back) */
 .back-btn {
-   margin-block-start: 10px; /* Añade un margen superior */
-   font-size: 14px; /* Tamaño de fuente */
-   color: #6c63ff; /* Color violeta */
-   text-decoration: none; /* Elimina el subrayado del enlace */
+   margin-block-start: 10px;
+   font-size: 14px;
+   color: #6c63ff;
+   text-decoration: none;
 }
 
 /* Estilo para el botón de retroceso al pasar el mouse */
 .login-btn:hover {
-    background-color: #5848c2; /* Cambia el color de fondo */
+    background-color: #5848c2;
 }
 
 /* Estilo para el enlace "crear cuenta" */
 .create-account {
-    margin-block-start: 10px; /* Añade un margen superior */
-    font-size: 14px; /* Tamaño de fuente */
+    margin-block-start: 10px;
+    font-size: 14px;
 }
 
 /* Estilo para el enlace dentro de "crear cuenta" */
 .create-account a {
-    text-decoration: none; /* Elimina el subrayado del enlace */
-    color: #6c63ff; /* Color violeta */
+    text-decoration: none;
+    color: #6c63ff;
 }
 
 /* Efecto hover para el enlace "crear cuenta" */
 .create-account a:hover {
-    text-decoration: underline; /* Subraya el enlace al pasar el cursor */
+    text-decoration: underline;
 }
 
 /* Estilo para el enlace de soporte */
 .soporte {
-    margin-block-start: 10px; /* Añade un margen superior */
-    font-size: 14px; /* Tamaño de fuente */
+    margin-block-start: 10px;
+    font-size: 14px;
 }
 
 /* Estilo para los enlaces dentro de "soporte" */
 .soporte a {
-    text-decoration: none; /* Elimina el subrayado del enlace */
-    color: #6c63ff; /* Color violeta */
+    text-decoration: none;
+    color: #6c63ff;
 }
 
 /* Efecto hover para los enlaces dentro de "soporte" */
 .soporte a:hover {
-    text-decoration: underline; /* Subraya el enlace al pasar el cursor */
+    text-decoration: underline;
 }
 
 /* Estilos para los campos de selección (select) */
 .select-group {
-    display: flex; /* Usa flexbox */
-    align-items: center; /* Alinea los elementos al centro */
-    gap: 30px; /* Añade un espacio de 30px entre los elementos */
+    display: flex;
+    align-items: center;
+    gap: 30px;
 }
 
 /* Estilo para las etiquetas de los campos select */
 .select-group label {
-    font-size: 14px; /* Tamaño de fuente */
-    white-space: nowrap; /* Evita que el texto se divida en varias líneas */
+    font-size: 14px;
+    white-space: nowrap;
 }
 
 /* Estilo para los campos select */
 select {
-    font-size: 14px; /* Tamaño de fuente */
-    padding: 5px; /* Relleno interno */
+    font-size: 14px;
+    padding: 5px;
 }
 
+.recaptcha-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-block: 20px;
+}
+
+/* Escala el reCAPTCHA */
+.recaptcha-container .g-recaptcha {
+    transform: scale(0.9);
+    transform-origin: center;
+}
+
+@media (max-width: 600px) {
+    .login-container {
+        padding: 10px;
+        max-inline-size: 100%;
+    }
+    .login-card h2 {
+        font-size: 20px;
+    }
+}
+
+.input-group input:focus {
+    outline: none;
+    box-shadow: 0 0 5px rgba(108, 99, 255, 0.7);
+    border-color: rgba(108, 99, 255, 0.7);
+}
+.password-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    inline-size: 100%;
+}
+
+.password-container input[type="password"] {
+    inline-size: 100%;
+    padding-inline-end: 40px;
+    padding-inline-start: 10px;
+    block-size: 40px;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+.password-container .eye-icon {
+    position: absolute;
+    inset-inline-end: 10px;
+    cursor: pointer;
+    font-size: 18px;
+    color: #666;
+}

@@ -53,111 +53,100 @@ ob_start();
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
-<div class="listar-container">
-    <h1>Lista de Personal</h1>
-    <div>
-        <div>
-            <button onclick="cargarFormularioCrear('personal')" class="btn btn-primary mb-3">Registrar Nuevo Personal</button>
+    <div class="listar-container">
+        <h1>Lista de Personal</h1>
+        <div class="btn-buscar-container">
+            <button onclick="cargarFormularioCrear('personal')" class="btn btn-primary">Registrar Nuevo Personal</button>
+            <form method="get" action="listarpersonal.php" class="form-inline">
+                <input type="text" name="query" id="query" placeholder="Buscar Personal" class="form-control" />
+                <button type="submit" class="btn btn-primary">Buscar</button>
+            </form>
+            <a href="reporte_personal.php" class="btn btn-success">Generar Reporte PDF</a>
         </div>
-        <div>
-            <section id="buscar" class="mb-3">
-                <form method="get" action="listarpersonal.php">
-                    <input type="text" name="query" id="query" placeholder="Buscar Personal" class="form-control"/>
-                    <button type="submit" class="btn btn-primary mt-2">Buscar</button>
-                </form>
-            </section>
-        </div>
-        <div>
-            <a href="reporte_personal.php" class="btn btn-success mb-3">Generar Reporte PDF</a>
-        </div>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Apellidos</th>
+                    <th>Usuario</th>
+                    <th>Correo</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach ($personales as $personal): ?>
+                <tr>
+                    <td><?php echo htmlspecialchars($personal['idPersonal']); ?></td>
+                    <td><?php echo htmlspecialchars($personal['Nombre']); ?></td>
+                    <td><?php echo htmlspecialchars($personal['Apellidos']); ?></td>
+                    <td><?php echo htmlspecialchars($personal['Usuario']); ?></td>
+                    <td><?php echo htmlspecialchars($personal['Correo']); ?></td>
+                    <td>
+                        <!-- Botón Editar -->
+                        <a href="update_personal.php?id=<?php echo $personal['idPersonal']; ?>" class="btn btn-warning">✏️</a>
+                        <!-- Botón para eliminar con SweetAlert2 -->
+                        <button class="btn btn-danger" onclick="confirmarEliminacion('<?php echo $personal['idPersonal']; ?>')">🗑️</button>
+                    </td>
+                </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
+    
+        <?php if (isset($_SESSION['mensaje'])): ?>
+            <script>
+                Swal.fire({
+                icon: 'success',
+                title: 'Éxito',
+                text: '<?php echo $_SESSION['mensaje']; ?>',
+                confirmButtonText: 'Aceptar'
+            });
+        </script>
+        <?php unset($_SESSION['mensaje']); endif; ?>
+
+        <!-- Modificado: Mostrar mensajes de error -->
+        <?php if (isset($_SESSION['error'])): ?>
+        <script>
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: '<?php echo $_SESSION['error']; ?>',
+                confirmButtonText: 'Aceptar'
+            });
+        </script>
+        <?php unset($_SESSION['error']); endif; ?>
     </div>
-    <table class="table table-bordered">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Nombre</th>
-                <th>Apellidos</th>
-                <th>Usuario</th>
-                <th>Correo</th>
-                <th>Acciones</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php foreach ($personales as $personal): ?>
-            <tr>
-                <td><?php echo htmlspecialchars($personal['idPersonal']); ?></td>
-                <td><?php echo htmlspecialchars($personal['Nombre']); ?></td>
-                <td><?php echo htmlspecialchars($personal['Apellidos']); ?></td>
-                <td><?php echo htmlspecialchars($personal['Usuario']); ?></td>
-                <td><?php echo htmlspecialchars($personal['Correo']); ?></td>
-                <td>
-                    <!-- Botón Editar -->
-                    <a href="update_personal.php?id=<?php echo $personal['idPersonal']; ?>" class="btn btn-warning">✏️</a>
-                    <!-- Botón para eliminar con SweetAlert2 -->
-                    <button class="btn btn-danger" onclick="confirmarEliminacion('<?php echo $personal['idPersonal']; ?>')">🗑️</button>
-                </td>
-            </tr>
-            <?php endforeach; ?>
-        </tbody>
-    </table>
-
-    <?php if (isset($_SESSION['mensaje'])): ?>
+    <script src="../../public/js/bootstrap.bundle.min.js"></script>
+    <script src="../../public/js/scripts.js" defer></script>
     <script>
+    function confirmarEliminacion(id) {
         Swal.fire({
-            icon: 'success',
-            title: 'Éxito',
-            text: '<?php echo $_SESSION['mensaje']; ?>',
-            confirmButtonText: 'Aceptar'
+        title: '¿Estás seguro?',
+        text: "No podrás revertir esta acción.",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#d33',
+        cancelButtonColor: '#3085d6',
+        confirmButtonText: 'Sí, eliminar',
+        cancelButtonText: 'Cancelar'
+        }).then((result) => {
+        if (result.isConfirmed) {
+            const form = document.createElement('form');
+            form.method = 'POST';
+            form.action = 'listarpersonal.php';
+            const input = document.createElement('input');
+            input.type = 'hidden';
+            input.name = 'eliminar_id';
+            input.value = id;
+            
+            form.appendChild(input);
+            document.body.appendChild(form);
+            form.submit();
+        }
         });
+    }
     </script>
-    <?php unset($_SESSION['mensaje']); endif; ?>
-
-    <!-- Modificado: Mostrar mensajes de error -->
-    <?php if (isset($_SESSION['error'])): ?>
-    <script>
-        Swal.fire({
-            icon: 'error',
-            title: 'Error',
-            text: '<?php echo $_SESSION['error']; ?>',
-            confirmButtonText: 'Aceptar'
-        });
-    </script>
-    <?php unset($_SESSION['error']); endif; ?>
-
-</div>
-
-<script src="../../public/js/bootstrap.bundle.min.js"></script>
-<script src="../../public/js/scripts.js" defer></script>
-<script>
-  function confirmarEliminacion(id) {
-    Swal.fire({
-      title: '¿Estás seguro?',
-      text: "No podrás revertir esta acción.",
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#d33',
-      cancelButtonColor: '#3085d6',
-      confirmButtonText: 'Sí, eliminar',
-      cancelButtonText: 'Cancelar'
-    }).then((result) => {
-      if (result.isConfirmed) {
-        const form = document.createElement('form');
-        form.method = 'POST';
-        form.action = 'listarpersonal.php';
-        const input = document.createElement('input');
-        input.type = 'hidden';
-        input.name = 'eliminar_id';
-        input.value = id;
-        
-        form.appendChild(input);
-        document.body.appendChild(form);
-        form.submit();
-      }
-    });
-  }
-</script>
-
-</body>
+    </body>
 </html>
 
 <?php
